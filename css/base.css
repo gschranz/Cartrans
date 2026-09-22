@@ -208,14 +208,14 @@ body { --leiste-h: calc(64px + env(safe-area-inset-bottom)); }
 .hero { position: relative; min-height: calc(100svh - var(--kopf-h)); display: grid; overflow: hidden; isolation: isolate; }
 .hero-foto { position: absolute; inset: 0; z-index: -2; }
 .hero-foto picture, .hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
-.hero-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18,20,23,.35) 0%, rgba(18,20,23,.55) 38%, rgba(18,20,23,.94) 72%, var(--asphalt) 100%); }
+.hero-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18,20,23,.55) 0%, rgba(18,20,23,.15) 28%, rgba(18,20,23,.5) 50%, rgba(18,20,23,.94) 74%, var(--asphalt) 100%); }
+.hero-foto img { object-position: 80% 62% !important; }
 .hero > .wrap { display: grid; align-content: end; }
 .hero-inhalt { padding-block: 34vh 44px; }
 .hero h1 { margin-bottom: 26px; }
 .hero h1 .panne { display: block; color: var(--orange); }
 .hero .lead { margin-bottom: 30px; }
 .hero .live { margin-bottom: 20px; }
-.hero-foto-text { display: none; }
 
 /* Laufband mit Leistungen */
 .laufband { position: relative; z-index: 2; overflow: hidden; background: var(--orange); color: var(--asphalt); padding-block: 10px;
@@ -552,6 +552,16 @@ a.kontakt-zeile:hover b { color: var(--orange); }
   .karte .ort { r: 7px; }
 }
 
+/* Hero auf Handy und Tablet: Foto oben mit sichtbarem Warndreieck, Text darunter */
+@media (max-width: 1099px) {
+  .hero { min-height: 0; }
+  .hero-foto { position: relative; inset: auto; height: clamp(260px, 44svh, 560px); }
+  .hero-foto::after { background: linear-gradient(180deg, rgba(18,20,23,.5) 0%, rgba(18,20,23,.05) 30%, rgba(18,20,23,.15) 62%, var(--asphalt) 100%); }
+  .hero-foto img { object-position: 76% 72% !important; }
+  .hero > .wrap { align-content: start; }
+  .hero-inhalt { position: relative; margin-top: -56px; padding-block: 0 48px; }
+}
+
 /* ==========================================================================
    Tablet
    ========================================================================== */
@@ -568,7 +578,6 @@ a.kontakt-zeile:hover b { color: var(--orange); }
   .vorfall-karte { grid-template-columns: 1.2fr 1fr; }
   .vorfall-karte .vk-bild { min-height: 100%; }
   .fracht { grid-auto-columns: min(46vw, 380px); }
-  .hero-inhalt { padding-block: 30vh 56px; }
 }
 
 /* ==========================================================================
@@ -588,15 +597,12 @@ a.kontakt-zeile:hover b { color: var(--orange); }
   .kopf-ruf .live i { background: var(--asphalt); } .kopf-ruf .live i::after { border-color: var(--asphalt); }
   .marke b { font-size: 31px; }
 
-  /* Hero als Doppelseite: Text links, Nachtfoto rechts */
-  .hero { grid-template-columns: minmax(0, 1fr); min-height: calc(100svh - var(--kopf-h)); }
-  .hero .wrap { align-content: stretch; display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(40px, 5vw, 90px); align-items: stretch; }
-  .hero-foto { position: relative; inset: auto; z-index: 0; grid-column: 2; grid-row: 1; margin-block: 28px 0; overflow: hidden; }
-  .hero-foto::after { background: linear-gradient(180deg, rgba(18,20,23,0) 45%, rgba(18,20,23,.85) 100%), linear-gradient(90deg, rgba(18,20,23,.35), transparent 40%); }
-  .hero-foto img { object-position: 50% 60%; }
-  .hero-inhalt { grid-column: 1; grid-row: 1; align-self: center; padding-block: 60px; }
-  .hero h1 { font-size: clamp(88px, 10.5vw, 188px); }
-    .hero-foto-text { display: flex; position: absolute; z-index: 2; left: 22px; right: 22px; bottom: 20px; display: flex; justify-content: space-between; font: 600 13px var(--schmal); letter-spacing: .14em; text-transform: uppercase; color: #d6d8dc; }
+  /* Hero: Foto über die ganze Breite, Text links auf der dunklen Straße, Warndreieck rechts frei */
+  .hero-foto::after { background: linear-gradient(90deg, rgba(18,20,23,.94) 0%, rgba(18,20,23,.8) 34%, rgba(18,20,23,.3) 60%, rgba(18,20,23,.05) 100%), linear-gradient(0deg, var(--asphalt) 0%, rgba(18,20,23,0) 20%); }
+  .hero-foto img { object-position: 50% 62% !important; }
+  .hero > .wrap { align-content: center; }
+  .hero-inhalt { padding-block: 70px 100px; max-width: 780px; }
+  .hero h1 { font-size: clamp(88px, 10vw, 180px); }
 
   .band-kopf { grid-template-columns: 1.1fr .9fr; align-items: end; column-gap: 60px; }
   .band-kopf .eyebrow { grid-column: 1 / -1; margin-bottom: -4px; }
@@ -618,10 +624,6 @@ a.kontakt-zeile:hover b { color: var(--orange); }
   .fuss .fuss-marke { grid-column: auto; }
   .zwei-spalten { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: start; }
   .klebt { position: sticky; top: calc(var(--kopf-h) + 32px); }
-}
-
-@media (min-width: 1500px) {
-  .hero .wrap { grid-template-columns: 1.3fr .7fr; }
 }
 
 /* ==========================================================================

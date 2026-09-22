@@ -445,5 +445,24 @@
    60,
    55
   ]
+ },
+ {
+  "slug": "hero-warndreieck",
+  "titel": "Warndreieck auf der Straße",
+  "kat": "stock",
+  "alt": "Warndreieck auf einer Landstraße in der Abenddämmerung, im Hintergrund ein Auto mit Licht",
+  "w": 5472,
+  "h": 3648,
+  "breiten": [
+   640,
+   1280,
+   1920,
+   2560
+  ],
+  "jpg": 1280,
+  "fokus": [
+   72,
+   70
+  ]
  }
 ]

@@ -44,7 +44,11 @@ KATALOG = [
     ("f6ed3df9", "unfall-audi", "Unfallfahrzeug · Abtransport", "unfall", "Weißer Audi mit geöffneter, verbogener Motorhaube auf dem Anhänger", (50, 50)),
     ("76d7ad29", "fuhrpark-koffer", "Fuhrpark · Touareg mit Kofferanhänger", "fuhrpark", "Grauer VW Touareg mit geschlossenem Kofferanhänger", (50, 60)),
     ("e52ed4ff", "fuhrpark-touareg", "Fuhrpark · Zugfahrzeug VW Touareg", "fuhrpark", "Schwarzer VW Touareg mit eingeschalteten Scheinwerfern in der Abenddämmerung", (60, 55)),
+    # Stockfoto (kein eigener Einsatz, daher nicht in der Galerie). Lizenz: original/fremdbilder/LIZENZ.txt
+    ("pexels-5056745", "hero-warndreieck", "Warndreieck auf der Straße", "stock", "Warndreieck auf einer Landstraße in der Abenddämmerung, im Hintergrund ein Auto mit Licht", (72, 70)),
 ]
+FREMD = {"pexels-5056745": os.path.join(WEB, "..", "original", "fremdbilder", "pexels-5056745-lucas-pezeta.jpg")}
+GROSS = {"hero-warndreieck": (640, 1280, 1920, 2560)}
 
 
 def look(im):
@@ -58,10 +62,13 @@ def main():
     dateien = {f.split("_")[1][:8]: f for f in os.listdir(QUELLE) if f.startswith("713fba_")}
     meta = []
     for kenn, slug, titel, kat, alt, fokus in KATALOG:
-        quelle = os.path.join(QUELLE, dateien[kenn])
-        im = look(ImageOps.exif_transpose(Image.open(quelle)).convert("RGB"))
+        quelle = FREMD.get(kenn) or os.path.join(QUELLE, dateien[kenn])
+        im = ImageOps.exif_transpose(Image.open(quelle)).convert("RGB")
+        if kat != "stock":
+            im = look(im)
         w, h = im.size
-        breiten = [b for b in BREITEN if b < w] + [min(w, BREITEN[-1])]
+        stufen = GROSS.get(slug, BREITEN)
+        breiten = [b for b in stufen if b < w] + [min(w, stufen[-1])]
         breiten = sorted(set(breiten))
         for b in breiten:
             klein = im.resize((b, round(h * b / w)), Image.LANCZOS) if b != w else im

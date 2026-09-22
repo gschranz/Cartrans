@@ -148,6 +148,7 @@ FAQ = {
 
 # ---------------------------------------------------------------- Hilfen
 BILDER = {b["slug"]: b for b in json.load(open(os.path.join(HIER, "bilder", "bilder.json"), encoding="utf-8"))}
+GALERIE = {k: b for k, b in BILDER.items() if b["kat"] != "stock"}
 
 
 def e(t):
@@ -181,14 +182,14 @@ def km(lat, lon, lat0=MITTE[0], lon0=MITTE[1]):
 # ---------------------------------------------------------------- Bausteine
 def galerie():
     zaehl = {}
-    for b in BILDER.values():
+    for b in GALERIE.values():
         zaehl[b["kat"]] = zaehl.get(b["kat"], 0) + 1
-    knoepfe = [f'<button type="button" aria-pressed="true" data-filter="alle">Alle<small>{len(BILDER)}</small></button>']
+    knoepfe = [f'<button type="button" aria-pressed="true" data-filter="alle">Alle<small>{len(GALERIE)}</small></button>']
     for k, name in KAT.items():
         if k in zaehl:
             knoepfe.append(f'<button type="button" aria-pressed="false" data-filter="{k}">{e(name)}<small>{zaehl[k]}</small></button>')
     items = []
-    for i, b in enumerate(BILDER.values()):
+    for i, b in enumerate(GALERIE.values()):
         titel, _, art = b["titel"].partition(" · ")
         items.append(
             f'<li data-kat="{b["kat"]}"><button type="button" data-lk="{i}" data-gross="/bilder/{b["slug"]}-{b["breiten"][-1]}.webp" '
