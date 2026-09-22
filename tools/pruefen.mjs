@@ -1,6 +1,9 @@
 // Prüft alle Seiten in Edge headless: seitliches Überlaufen, h1, Alt-Texte, kaputte Bilder, Konsolenfehler
 import { spawn } from 'node:child_process';
 import { mkdtempSync, readdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+for (const f of ['js/core.js']) { try { execFileSync(process.execPath, ['--check', f]); } catch (e) { console.log(`SYNTAXFEHLER in ${f}:
+` + e.stderr); process.exit(1); } }
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 const basis = process.argv[2] || 'http://localhost:8796';

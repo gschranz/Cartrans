@@ -255,8 +255,7 @@
       const daten = Object.fromEntries(new FormData(form).entries());
       daten.typ = form.dataset.formular; daten.seite = location.pathname;
       const status = $('.form-status', form), senden = $('button[type="submit"]', form);
-      const mailText = () => Object.entries(daten).filter(([k]) => !['website', 'einwilligung', 'seite'].includes(k)).map(([k, v]) => `${k}: ${v}`).join('
-');
+      const mailText = () => Object.entries(daten).filter(([k]) => !['website', 'einwilligung', 'seite'].includes(k)).map(([k, v]) => `${k}: ${v}`).join('\n');
       const mailLink = () => 'mailto:office@cartrans.at?subject=' + encodeURIComponent(daten.typ === 'transport' ? 'Transportanfrage' : 'Rückruf') + '&body=' + encodeURIComponent(mailText());
       if (window.STATISCH) { // Vorschau ohne Server: Anfrage als E-Mail
         status.className = 'form-status'; status.hidden = false;
