@@ -218,11 +218,14 @@ body { --leiste-h: calc(64px + env(safe-area-inset-bottom)); }
 .hero-foto-text { display: none; }
 
 /* Laufband mit Leistungen */
-.laufband { position: relative; overflow: hidden; border-block: 1px solid var(--naht); background: var(--asphalt); }
+.laufband { position: relative; overflow: hidden; background: var(--orange); color: var(--asphalt); padding-block: 10px; }
+/* Warnstreifen oben und unten wie am Anruf-Button */
+.laufband::before, .laufband::after { content: ""; position: absolute; left: 0; right: 0; z-index: 1; height: 10px; background: var(--streifen); background-size: 25.46px 25.46px; }
+.laufband::before { top: 0; } .laufband::after { bottom: 0; }
 .laufband-spur { display: flex; width: max-content; animation: laufen 38s linear infinite; }
 .laufband ul { display: flex; list-style: none; flex: none; }
-.laufband li { display: flex; align-items: center; gap: 28px; padding: 20px 14px 18px; font: 800 clamp(22px, 2.4vw, 34px)/1 var(--display); text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; color: #cfd2d6; }
-.laufband li::after { content: ""; width: 12px; height: 12px; background: var(--orange); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); margin-left: 14px; }
+.laufband li { display: flex; align-items: center; gap: 28px; padding: 18px 14px 16px; font: 800 clamp(22px, 2.4vw, 34px)/1 var(--display); text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; color: var(--asphalt); }
+.laufband li::after { content: ""; width: 12px; height: 12px; background: var(--asphalt); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); margin-left: 14px; }
 @keyframes laufen { to { transform: translateX(-50%); } }
 .laufband:hover .laufband-spur { animation-play-state: paused; }
 
