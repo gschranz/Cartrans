@@ -129,7 +129,7 @@ button { cursor: pointer; }
 .ausweich { margin: 14px 0 0; font-size: 15px; color: var(--leit); }
 .ausweich a { color: var(--reflex); font-weight: 600; white-space: nowrap; }
 
-.pfeil-link { display: inline-flex; align-items: center; gap: 10px; font: 700 16px var(--schmal); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--orange-hell); }
+.pfeil-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font: 700 16px var(--schmal); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--orange-hell); }
 .pfeil-link svg { width: 20px; height: 20px; transition: transform .3s var(--ease); }
 .pfeil-link:hover svg, .pfeil-link:focus-visible svg { transform: translateX(5px); }
 .band--beton .pfeil-link { color: var(--orange-dunkel); }
@@ -234,14 +234,18 @@ body { --leiste-h: calc(64px + env(safe-area-inset-bottom)); }
 
 /* ---------- Was ist passiert? ---------- */
 .vorfall { display: grid; gap: 28px; }
-.vorfall-wahl { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--rand) * -1); padding-inline: var(--rand); scroll-snap-type: x mandatory; padding-bottom: 4px; }
-.vorfall-wahl::-webkit-scrollbar { display: none; }
+/* alle Knöpfe immer sichtbar: Raster, das auf schmalen Geräten umbricht */
+.vorfall-wahl { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
 .vorfall-wahl button {
-  flex: none; scroll-snap-align: start; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 20px 0 16px;
+  display: flex; align-items: center; gap: 10px; min-height: 58px; padding: 10px 14px; text-align: left; line-height: 1.1;
   border: 1px solid var(--naht-hi); background: var(--asphalt-2); font: 700 17px/1 var(--schmal); letter-spacing: .06em; text-transform: uppercase; color: #d6d8dc;
   transition: background .25s, border-color .25s, color .25s;
 }
-.vorfall-wahl button svg { width: 26px; height: 26px; color: var(--orange); transition: color .25s; }
+.vorfall-wahl button svg { flex: none; width: 26px; height: 26px; color: var(--orange); transition: color .25s; }
+@media (min-width: 560px) and (max-width: 1099px) {
+  .vorfall-wahl { grid-template-columns: repeat(5, 1fr); }
+  .vorfall-wahl button { flex-direction: column; justify-content: center; text-align: center; gap: 8px; min-height: 92px; padding: 12px 6px; font-size: 15px; }
+}
 .vorfall-wahl button:hover { border-color: var(--orange); color: var(--reflex); }
 .vorfall-wahl button[aria-selected="true"] { background: var(--orange); border-color: var(--orange); color: var(--asphalt); }
 .vorfall-wahl button[aria-selected="true"] svg { color: var(--asphalt); }
@@ -271,7 +275,7 @@ body { --leiste-h: calc(64px + env(safe-area-inset-bottom)); }
 
 /* ---------- Transporte: Frachtbriefe ---------- */
 .fracht-kopf { display: grid; gap: 24px; align-items: end; margin-bottom: 40px; }
-.fracht-steuer { display: none; gap: 10px; }
+.fracht-steuer { display: flex; gap: 10px; }
 .fracht-steuer button { width: 54px; height: 54px; display: grid; place-items: center; border: 1px solid var(--naht-hi); background: none; transition: background .25s, border-color .25s; }
 .fracht-steuer button:hover { background: var(--orange); border-color: var(--orange); color: var(--asphalt); }
 .fracht-steuer svg { width: 22px; height: 22px; }
@@ -345,7 +349,7 @@ a.kachel .pfeil-link { margin-top: 8px; }
 .karte .kompass { fill: var(--leit); font: 600 16px var(--schmal); letter-spacing: .14em; }
 .karte-hinweis { margin: 12px 0 0; font-size: 13px; color: var(--leit); }
 .orte { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
-.orte a, .orte span { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border: 1px solid var(--naht-hi); font: 600 15px/1 var(--schmal); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: #d6d8dc; transition: border-color .2s, color .2s; }
+.orte a, .orte span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 1px solid var(--naht-hi); font: 600 15px/1 var(--schmal); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: #d6d8dc; transition: border-color .2s, color .2s; }
 .orte a:hover { border-color: var(--orange); color: var(--reflex); }
 .band--beton .orte a, .band--beton .orte span { border-color: rgba(22,24,27,.22); color: var(--tinte); }
 .band--beton .orte a:hover { border-color: var(--orange-tief); color: var(--tinte); }
@@ -562,6 +566,16 @@ a.kontakt-zeile:hover b { color: var(--orange); }
   .hero-inhalt { position: relative; margin-top: -56px; padding-block: 0 48px; }
 }
 
+/* Handy: Knopfreihen über die volle Breite, leichter zu treffen */
+@media (max-width: 559px) {
+  .btn-reihe { flex-direction: column; align-items: stretch; }
+  .btn-reihe .btn { width: 100%; }
+  .btn-reihe .pfeil-link { align-self: flex-start; }
+  .stufe-knoepfe .btn { flex: 1 1 auto; }
+  .vorfall-wahl { grid-template-columns: 1fr 1fr; }
+  .vorfall-wahl button:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
 /* ==========================================================================
    Tablet
    ========================================================================== */
@@ -616,7 +630,6 @@ a.kontakt-zeile:hover b { color: var(--orange); }
   .ablauf li, .ablauf li:last-child { grid-template-columns: 1fr; border-bottom: 0; padding-top: 30px; }
   .ablauf li::before { grid-row: auto; margin-bottom: 18px; }
   .fracht-kopf { grid-template-columns: 1fr auto; }
-  .fracht-steuer { display: flex; }
   .fracht { grid-auto-columns: calc((100% - 3 * 18px) / 3.4); margin-inline: 0; padding-inline: 0; }
   .galerie { columns: 4 240px; column-gap: 16px; }
   .galerie li { margin-bottom: 16px; }
