@@ -218,7 +218,10 @@ body { --leiste-h: calc(64px + env(safe-area-inset-bottom)); }
 .hero-foto-text { display: none; }
 
 /* Laufband mit Leistungen */
-.laufband { position: relative; overflow: hidden; background: var(--orange); color: var(--asphalt); padding-block: 10px; }
+.laufband { position: relative; z-index: 2; overflow: hidden; background: var(--orange); color: var(--asphalt); padding-block: 10px;
+  /* leicht schräg gestellt, breiter als der Bildschirm, damit an den Ecken keine Lücken entstehen */
+  width: 106%; margin: 0 -3%; rotate: -1.3deg; }
+.laufband-rahmen { overflow: hidden; padding-block: 18px 24px; margin-block: -4px; }
 /* Warnstreifen oben und unten wie am Anruf-Button */
 .laufband::before, .laufband::after { content: ""; position: absolute; left: 0; right: 0; z-index: 1; height: 10px; background: var(--streifen); background-size: 25.46px 25.46px; }
 .laufband::before { top: 0; } .laufband::after { bottom: 0; }
