@@ -10,7 +10,7 @@
 <style>
 :root{
   --asphalt:#121417; --panel:#1a1d22; --panel-hi:#23272e; --line:rgba(241,241,238,.11); --line-hi:rgba(241,241,238,.22);
-  --text:#d6d8dc; --muted:#a1a8b2; --weiss:#f1f1ee; --orange:#ff7b1c; --orange-hell:#ffb074; --ok:#3ddc84;
+  --text:#d6d8dc; --muted:#a1a8b2; --weiss:#f1f1ee; --orange:#ffa51f; --orange-hell:#ffc861; --ok:#3ddc84;
   --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif; --text-f:"Barlow",system-ui,sans-serif; --schmal:"Barlow Condensed","Arial Narrow",sans-serif;
   --streifen:repeating-linear-gradient(-45deg,var(--orange) 0 9px,var(--asphalt) 9px 18px);
   color-scheme:dark;
@@ -18,7 +18,7 @@
 *{box-sizing:border-box}
 html{background:var(--asphalt)}
 body{margin:0;background:var(--asphalt);color:var(--text);font:400 16px/1.55 var(--text-f);padding-inline:clamp(16px,4vw,40px);padding-block:0 72px;
-  background-image:radial-gradient(1000px 520px at 88% -8%,rgba(255,123,28,.13),transparent 60%)}
+  background-image:radial-gradient(1000px 520px at 88% -8%,rgba(255,165,31,.13),transparent 60%)}
 .wrap{max-width:920px;margin:0 auto}
 a{color:var(--orange-hell)}
 :focus-visible{outline:3px solid var(--orange);outline-offset:3px}
@@ -62,7 +62,7 @@ ul.punkte{list-style:none;margin:0;padding:0}
 ul.punkte li{border-top:1px solid var(--line)}
 ul.punkte li:last-child{border-bottom:1px solid var(--line)}
 label.punkt{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;padding:14px 6px 14px 2px;cursor:pointer;transition:background .2s}
-label.punkt:hover{background:linear-gradient(90deg,rgba(255,123,28,.09),transparent 70%)}
+label.punkt:hover{background:linear-gradient(90deg,rgba(255,165,31,.09),transparent 70%)}
 label.punkt input{position:absolute;opacity:0;width:1px;height:1px}
 .box{width:24px;height:24px;margin-top:1px;position:relative;border:2px solid var(--line-hi);background:#16191d;transition:background .2s,border-color .2s}
 .box::after{content:"";position:absolute;left:6px;top:1px;width:7px;height:13px;border:solid var(--asphalt);border-width:0 3px 3px 0;rotate:45deg;opacity:0;transition:opacity .15s}
@@ -72,17 +72,17 @@ label.punkt input:focus-visible + .box{outline:3px solid var(--orange);outline-o
 label.punkt input:disabled ~ *{cursor:default}
 .txt{color:var(--text)}
 .txt small{display:block;margin-top:3px;color:var(--muted);font-size:14px}
-label.punkt input:checked ~ .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,123,28,.6)}
+label.punkt input:checked ~ .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,165,31,.6)}
 .fuss{margin-top:48px;display:grid;gap:8px;font-size:14px;color:var(--muted)}
 .fuss b{color:var(--text);font-weight:600}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-@media print{body{background:#fff;color:#111;padding:0}.index,.hinweis{display:none}h1,h2{color:#111}.txt,.lead,.s-lead{color:#222}.box{border-color:#555;background:#fff}label.punkt input:checked + .box{background:#ff7b1c}}
+@media print{body{background:#fff;color:#111;padding:0}.index,.hinweis{display:none}h1,h2{color:#111}.txt,.lead,.s-lead{color:#222}.box{border-color:#555;background:#fff}label.punkt input:checked + .box{background:#ffa51f}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <a class="marke" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 25h20v4H6z" fill="#f1f1ee"/><path d="M8.5 25a7.5 8 0 0 1 15 0z" fill="#ff7b1c"/><path d="M16 3v5M5 8l3.3 3.3M27 8l-3.3 3.3M1.5 18H6M26 18h4.5" stroke="#ff7b1c" stroke-width="2.2" stroke-linecap="round"/></svg><b>Cartrans</b></a>
+    <a class="marke" href="/"><b>Cart<span style="color:var(--orange)">rans</span></b></a>
     <span class="stand" id="stand">Stand 22.09.2026</span>
   </header>
   <div class="hero">
@@ -152,13 +152,13 @@ label.punkt input:checked ~ .txt{color:var(--muted);text-decoration:line-through
     {"id": "bilder-1", "t": "Auf vielen Fotos sind Kennzeichen von Kundenfahrzeugen lesbar: unkenntlich machen lassen oder schriftlich freigeben"},
     {"id": "bilder-2", "t": "Bestätigen, dass die Fotos der Kundenfahrzeuge (z. B. Lamborghini, Audi R8, Mustang) veröffentlicht werden dürfen"}]},
    {"label": "Logo", "items": [
-    {"id": "bilder-7", "t": "Gibt es ein Logo? Sonst die vorgeschlagene Wortmarke „Cartrans“ mit Rundumleuchte freigeben"}]}]},
+    {"id": "bilder-7", "t": "Gibt es ein Logo? Sonst die vorgeschlagene Wortmarke „Cartrans“ freigeben"}]}]},
  {"id": "neufotos", "title": "Neue Fotos", "start": false,
   "lead": "Eigene, neue Fotos machen die Seite noch persönlicher. Wir beraten gerne, wie sie mit dem Handy gelingen.",
   "groups": [
    {"label": null, "items": [
     {"id": "bilder-3", "t": "Inhaberin oder Team mit Fahrzeug, für „Über uns“", "h": "Mit Einverständnis der abgebildeten Personen"},
-    {"id": "bilder-4", "t": "Ein Einsatz bei Nacht mit eingeschalteter Rundumleuchte, als Titelbild"},
+    {"id": "bilder-4", "t": "Ein Einsatz bei Nacht als Titelbild"},
     {"id": "bilder-5", "t": "Der ganze Fuhrpark in einer Reihe"},
     {"id": "bilder-6", "t": "Querformat-Fotos (Handy quer halten) für breite Bildschirme"}]}]},
  {"id": "partner", "title": "Partner", "start": true,

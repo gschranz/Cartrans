@@ -232,7 +232,7 @@ def karte():
          '<title id="karte-titel">Einsatzgebiet von JS-Cartrans</title>',
          '<desc id="karte-desc">Schematische Karte mit Eggendorf in der Mitte und Ringen in 10, 25 und 40 Kilometern Entfernung. '
          'Eingezeichnet sind Wien, Mödling, Baden, Wiener Neustadt, Neunkirchen, Eisenstadt und weitere Orte sowie die A2, A3 und S4.</desc>',
-         '<defs><radialGradient id="gebiet-verlauf"><stop offset="0" stop-color="#ff7b1c" stop-opacity=".22"/><stop offset="1" stop-color="#ff7b1c" stop-opacity="0"/></radialGradient></defs>',
+         '<defs><radialGradient id="gebiet-verlauf"><stop offset="0" stop-color="#ffa51f" stop-opacity=".22"/><stop offset="1" stop-color="#ffa51f" stop-opacity="0"/></radialGradient></defs>',
          f'<circle class="gebiet" cx="{W / 2:.0f}" cy="{H / 2 + 20:.0f}" r="{25 * PX_KM:.0f}"/>']
     for r in (10, 25, 40):
         s.append(f'<circle class="ring" cx="{cx:.0f}" cy="{cy:.0f}" r="{r * PX_KM:.0f}"/>')
@@ -347,8 +347,7 @@ def kopf(meta, aktiv):
 <header class="kopf" id="kopf">
   <div class="wrap">
     <a class="marke" href="/" aria-label="JS-Cartrans, zur Startseite">
-      {LEUCHTE}
-      <span><b>Cartrans</b><small>Abschleppdienst &amp; Transporte</small></span>
+      <span><b>Cart<span class="o">rans</span></b><small>Abschleppdienst &amp; Transporte</small></span>
     </a>
     <nav class="nav" aria-label="Hauptnavigation"><ul>{nav}</ul></nav>
     <a class="kopf-ruf" href="{K["TEL1_HREF"]}" data-zaehlen="anruf"><small class="live"><i></i>24/7</small><b>{K["TEL1"]}</b></a>
@@ -364,12 +363,6 @@ def kopf(meta, aktiv):
 </div>
 <main id="inhalt">
 """
-
-
-LEUCHTE = ('<svg class="leuchte" viewBox="0 0 32 32" aria-hidden="true">'
-           '<path d="M6 25h20v4H6z" fill="currentColor"/>'
-           '<path d="M8.5 25a7.5 8 0 0 1 15 0z" fill="#ff7b1c"/>'
-           '<path d="M16 3v5M5 8l3.3 3.3M27 8l-3.3 3.3M1.5 18H6M26 18h4.5" stroke="#ff7b1c" stroke-width="2.2" stroke-linecap="round"/></svg>')
 
 
 def fuss():
@@ -424,8 +417,6 @@ def ersetzen(text, tiefe=0):
             return faq(arg)
         if name in ("galerie", "fracht", "karte", "partner", "orte"):
             return globals()[name]()
-        if name == "LEUCHTE":
-            return LEUCHTE
         if name in K:
             return K[name]
         raise KeyError(f"unbekannter Platzhalter {{{{{m.group(1)}}}}}")
@@ -471,7 +462,7 @@ def og_bild():
     im = im.crop((0, y0, w, y0 + zh)).resize((1200, 630), Image.LANCZOS)
     d = ImageDraw.Draw(im, "RGBA")
     d.rectangle((0, 0, 1200, 630), fill=(18, 20, 23, 110))
-    d.rectangle((0, 560, 1200, 630), fill=(255, 123, 28, 255))
+    d.rectangle((0, 560, 1200, 630), fill=(255, 165, 31, 255))
     for x in range(-70, 1200, 36):
         d.polygon([(x, 560), (x + 18, 560), (x + 88, 630), (x + 70, 630)], fill=(18, 20, 23, 255))
     im.save(ziel, quality=84, optimize=True, progressive=True)
@@ -496,8 +487,7 @@ def main():
     urls = "".join(f"<url><loc>{DOMAIN}{p}</loc><lastmod>{heute}</lastmod></url>" for p in fertig)
     with open(os.path.join(HIER, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
-    if not os.path.exists(os.path.join(HIER, "bilder", "og-bild.jpg")):
-        og_bild()
+    og_bild()
     print(f"{len(quellen)} Seiten erzeugt, Sitemap mit {len(fertig)} Adressen.")
 
 
