@@ -1,0 +1,449 @@
+[
+ {
+  "slug": "audi-r8-nacht",
+  "titel": "Audi R8 · Nachttransport",
+  "kat": "sportwagen",
+  "alt": "Grauer Audi R8 nachts auf einem Autotransportanhänger unter Straßenlaternen",
+  "w": 1056,
+  "h": 1510,
+  "breiten": [
+   640,
+   1056
+  ],
+  "jpg": 1056,
+  "fokus": [
+   50,
+   55
+  ]
+ },
+ {
+  "slug": "lamborghini-orange",
+  "titel": "Lamborghini · Überstellung",
+  "kat": "sportwagen",
+  "alt": "Orangefarbener Lamborghini auf dem Anhänger vor einer Halle",
+  "w": 942,
+  "h": 710,
+  "breiten": [
+   640,
+   942
+  ],
+  "jpg": 942,
+  "fokus": [
+   50,
+   50
+  ]
+ },
+ {
+  "slug": "lamborghini-schwarz",
+  "titel": "Lamborghini · Transport",
+  "kat": "sportwagen",
+  "alt": "Schwarzer Lamborghini auf dem Autotransportanhänger",
+  "w": 1170,
+  "h": 1522,
+  "breiten": [
+   640,
+   1170
+  ],
+  "jpg": 1170,
+  "fokus": [
+   50,
+   45
+  ]
+ },
+ {
+  "slug": "lamborghini-heck",
+  "titel": "Lamborghini · gesichert verladen",
+  "kat": "sportwagen",
+  "alt": "Schwarzer Lamborghini von hinten, mit Spanngurten auf dem Anhänger gesichert",
+  "w": 1054,
+  "h": 1502,
+  "breiten": [
+   640,
+   1054
+  ],
+  "jpg": 1054,
+  "fokus": [
+   50,
+   55
+  ]
+ },
+ {
+  "slug": "bmw-m3-e36",
+  "titel": "BMW M3 E36 · Transport",
+  "kat": "sportwagen",
+  "alt": "Violetter BMW M3 der Baureihe E36 auf dem Anhänger",
+  "w": 981,
+  "h": 798,
+  "breiten": [
+   640,
+   981
+  ],
+  "jpg": 981,
+  "fokus": [
+   50,
+   55
+  ]
+ },
+ {
+  "slug": "audi-tt-berge",
+  "titel": "Audi TT · Überstellung",
+  "kat": "sportwagen",
+  "alt": "Weißer Audi TT mit Streifen auf dem Anhänger, im Hintergrund Berge",
+  "w": 994,
+  "h": 773,
+  "breiten": [
+   640,
+   994
+  ],
+  "jpg": 994,
+  "fokus": [
+   55,
+   50
+  ]
+ },
+ {
+  "slug": "audi-tt-grau",
+  "titel": "Audi TT · Transport",
+  "kat": "sportwagen",
+  "alt": "Grauer Audi TT auf dem Anhänger bei Sonnenschein",
+  "w": 727,
+  "h": 556,
+  "breiten": [
+   640,
+   727
+  ],
+  "jpg": 727,
+  "fokus": [
+   55,
+   55
+  ]
+ },
+ {
+  "slug": "audi-rs-front",
+  "titel": "Audi RS · Überstellung",
+  "kat": "sportwagen",
+  "alt": "Grauer Audi RS von vorne auf dem Anhänger",
+  "w": 753,
+  "h": 956,
+  "breiten": [
+   640,
+   753
+  ],
+  "jpg": 753,
+  "fokus": [
+   50,
+   50
+  ]
+ },
+ {
+  "slug": "audi-rs6-avant",
+  "titel": "Audi RS 6 Avant · Transport",
+  "kat": "sportwagen",
+  "alt": "Schwarzer Audi RS 6 Avant von hinten auf dem Anhänger",
+  "w": 1170,
+  "h": 800,
+  "breiten": [
+   640,
+   1170
+  ],
+  "jpg": 1170,
+  "fokus": [
+   50,
+   55
+  ]
+ },
+ {
+  "slug": "mercedes-cls",
+  "titel": "Mercedes CLS · Transport",
+  "kat": "ueberstellung",
+  "alt": "Schwarzer Mercedes CLS auf der Ladefläche des Anhängers",
+  "w": 1170,
+  "h": 1903,
+  "breiten": [
+   640,
+   1170
+  ],
+  "jpg": 1170,
+  "fokus": [
+   50,
+   45
+  ]
+ },
+ {
+  "slug": "mustang-rot",
+  "titel": "Ford Mustang · Oldtimer zur Prüfstelle",
+  "kat": "oldtimer",
+  "alt": "Roter Ford Mustang Oldtimer auf dem Anhänger vor einer Kfz-Prüfstelle",
+  "w": 1081,
+  "h": 2036,
+  "breiten": [
+   640,
+   1081
+  ],
+  "jpg": 1081,
+  "fokus": [
+   50,
+   45
+  ]
+ },
+ {
+  "slug": "mustang-gruen",
+  "titel": "Ford Mustang · Oldtimer",
+  "kat": "oldtimer",
+  "alt": "Grüner Ford Mustang Oldtimer auf dem Anhänger im Herbstlicht",
+  "w": 1170,
+  "h": 822,
+  "breiten": [
+   640,
+   1170
+  ],
+  "jpg": 1170,
+  "fokus": [
+   50,
+   50
+  ]
+ },
+ {
+  "slug": "mustang-gruen-heck",
+  "titel": "Ford Mustang · Oldtimer",
+  "kat": "oldtimer",
+  "alt": "Grüner Ford Mustang von hinten auf dem Anhänger",
+  "w": 1170,
+  "h": 566,
+  "breiten": [
+   640,
+   1170
+  ],
+  "jpg": 1170,
+  "fokus": [
+   40,
+   55
+  ]
+ },
+ {
+  "slug": "ktm-motocross",
+  "titel": "KTM · Motorradtransport",
+  "kat": "motorrad",
+  "alt": "Orange KTM Motocross-Maschine auf einem kleinen Anhänger an der Tankstelle",
+  "w": 750,
+  "h": 1334,
+  "breiten": [
+   640,
+   750
+  ],
+  "jpg": 750,
+  "fokus": [
+   50,
+   55
+  ]
+ },
+ {
+  "slug": "ram-pickup",
+  "titel": "RAM Pick-up · Transport",
+  "kat": "ueberstellung",
+  "alt": "Violetter RAM Pick-up auf dem Autotransportanhänger",
+  "w": 1170,
+  "h": 869,
+  "breiten": [
+   640,
+   1170
+  ],
+  "jpg": 1170,
+  "fokus": [
+   50,
+   50
+  ]
+ },
+ {
+  "slug": "vw-crafter",
+  "titel": "VW Crafter · Überstellung",
+  "kat": "ueberstellung",
+  "alt": "Weißer VW Crafter Transporter auf dem Anhänger",
+  "w": 856,
+  "h": 1600,
+  "breiten": [
+   640,
+   856
+  ],
+  "jpg": 856,
+  "fokus": [
+   50,
+   45
+  ]
+ },
+ {
+  "slug": "autohaus-mercedes",
+  "titel": "Überstellung ins Autohaus",
+  "kat": "ueberstellung",
+  "alt": "VW Touareg mit Anhänger und Mercedes vor einem Mercedes-Benz Autohaus",
+  "w": 1170,
+  "h": 849,
+  "breiten": [
+   640,
+   1170
+  ],
+  "jpg": 1170,
+  "fokus": [
+   45,
+   60
+  ]
+ },
+ {
+  "slug": "konvoi",
+  "titel": "Zwei Gespanne · Doppelüberstellung",
+  "kat": "ueberstellung",
+  "alt": "Zwei Zugfahrzeuge mit Anhängern transportieren zwei gelbe Neuwagen",
+  "w": 1600,
+  "h": 520,
+  "breiten": [
+   640,
+   1280,
+   1600
+  ],
+  "jpg": 1280,
+  "fokus": [
+   50,
+   50
+  ]
+ },
+ {
+  "slug": "unfall-bmw-z4-feuerwehr",
+  "titel": "BMW Z4 · Unfallbergung",
+  "kat": "unfall",
+  "alt": "Unfallbeschädigter weißer BMW Z4 auf dem Anhänger vor einem Feuerwehrhaus",
+  "w": 3024,
+  "h": 4032,
+  "breiten": [
+   640,
+   1280,
+   1920
+  ],
+  "jpg": 1280,
+  "fokus": [
+   40,
+   60
+  ]
+ },
+ {
+  "slug": "unfall-bmw-z4",
+  "titel": "BMW Z4 · Unfallfahrzeug",
+  "kat": "unfall",
+  "alt": "Weißer BMW Z4 mit stark beschädigter Front auf dem Anhänger",
+  "w": 3024,
+  "h": 4032,
+  "breiten": [
+   640,
+   1280,
+   1920
+  ],
+  "jpg": 1280,
+  "fokus": [
+   50,
+   55
+  ]
+ },
+ {
+  "slug": "unfall-front",
+  "titel": "Unfallfahrzeug · Abtransport",
+  "kat": "unfall",
+  "alt": "Dunkles Unfallfahrzeug mit zerstörter Front auf dem Anhänger",
+  "w": 3024,
+  "h": 4032,
+  "breiten": [
+   640,
+   1280,
+   1920
+  ],
+  "jpg": 1280,
+  "fokus": [
+   50,
+   60
+  ]
+ },
+ {
+  "slug": "unfall-suv",
+  "titel": "Unfall-SUV · Bergung",
+  "kat": "unfall",
+  "alt": "Schwarzer SUV mit abgerissenem Vorderrad auf dem Anhänger",
+  "w": 4032,
+  "h": 3024,
+  "breiten": [
+   640,
+   1280,
+   1920
+  ],
+  "jpg": 1280,
+  "fokus": [
+   40,
+   50
+  ]
+ },
+ {
+  "slug": "unfall-weiss",
+  "titel": "Unfallfahrzeug · Abtransport",
+  "kat": "unfall",
+  "alt": "Weißes Auto mit Frontschaden auf dem Anhänger",
+  "w": 1026,
+  "h": 1824,
+  "breiten": [
+   640,
+   1026
+  ],
+  "jpg": 1026,
+  "fokus": [
+   50,
+   50
+  ]
+ },
+ {
+  "slug": "unfall-audi",
+  "titel": "Unfallfahrzeug · Abtransport",
+  "kat": "unfall",
+  "alt": "Weißer Audi mit geöffneter, verbogener Motorhaube auf dem Anhänger",
+  "w": 993,
+  "h": 1490,
+  "breiten": [
+   640,
+   993
+  ],
+  "jpg": 993,
+  "fokus": [
+   50,
+   50
+  ]
+ },
+ {
+  "slug": "fuhrpark-koffer",
+  "titel": "Fuhrpark · Touareg mit Kofferanhänger",
+  "kat": "fuhrpark",
+  "alt": "Grauer VW Touareg mit geschlossenem Kofferanhänger",
+  "w": 1006,
+  "h": 1067,
+  "breiten": [
+   640,
+   1006
+  ],
+  "jpg": 1006,
+  "fokus": [
+   50,
+   60
+  ]
+ },
+ {
+  "slug": "fuhrpark-touareg",
+  "titel": "Fuhrpark · Zugfahrzeug VW Touareg",
+  "kat": "fuhrpark",
+  "alt": "Schwarzer VW Touareg mit eingeschalteten Scheinwerfern in der Abenddämmerung",
+  "w": 1045,
+  "h": 837,
+  "breiten": [
+   640,
+   1045
+  ],
+  "jpg": 1045,
+  "fokus": [
+   60,
+   55
+  ]
+ }
+]

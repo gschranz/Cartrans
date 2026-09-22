@@ -1,0 +1,13 @@
+<form class="formular" id="rueckruf" data-formular="rueckruf" novalidate>
+  <div class="feld-reihe">
+    <div class="feld"><label for="r-name">Name</label><input id="r-name" name="name" autocomplete="name" required><span class="fehler" id="r-name-f"></span></div>
+    <div class="feld"><label for="r-tel">Telefon</label><input id="r-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" required><span class="fehler" id="r-tel-f"></span></div>
+  </div>
+  <div class="feld"><label for="r-nachricht">Worum geht es? <span class="opt">(optional)</span></label><textarea id="r-nachricht" name="nachricht" rows="4" placeholder="z. B. Überstellung nächste Woche, bitte um Rückruf am Vormittag"></textarea></div>
+  <div class="honig" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+  <label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Mehr dazu in der <a href="/datenschutz">Datenschutzerklärung</a>.</span></label>
+  <span class="fehler" data-fehler-einwilligung style="color:#ff9a9a;font-size:14px"></span>
+  <p class="klein" style="margin:0">Bei einem Notfall bitte nicht schreiben, sondern anrufen: <a href="{{TEL1_HREF}}" data-zaehlen="anruf">{{TEL1}}</a>.</p>
+  <div><button type="submit" class="btn btn--hell">Rückruf anfordern {{icon:pfeil}}</button></div>
+  <div class="form-status" role="status" hidden></div>
+</form>

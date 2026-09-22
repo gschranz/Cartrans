@@ -1,0 +1,7 @@
+# Zeilenenden immer LF, sonst startet start.sh im Linux-Container nicht
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.avif binary
+*.woff2 binary

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /betreiber/
+Disallow: /api/
+
+Sitemap: https://www.cartrans.at/sitemap.xml

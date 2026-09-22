@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Cartrans Website · offene Punkte</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/fonts.css">
+<style>
+:root{
+  --asphalt:#121417; --panel:#1a1d22; --panel-hi:#23272e; --line:rgba(241,241,238,.11); --line-hi:rgba(241,241,238,.22);
+  --text:#d6d8dc; --muted:#a1a8b2; --weiss:#f1f1ee; --orange:#ff7b1c; --orange-hell:#ffb074; --ok:#3ddc84;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif; --text-f:"Barlow",system-ui,sans-serif; --schmal:"Barlow Condensed","Arial Narrow",sans-serif;
+  --streifen:repeating-linear-gradient(-45deg,var(--orange) 0 9px,var(--asphalt) 9px 18px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--asphalt)}
+body{margin:0;background:var(--asphalt);color:var(--text);font:400 16px/1.55 var(--text-f);padding-inline:clamp(16px,4vw,40px);padding-block:0 72px;
+  background-image:radial-gradient(1000px 520px at 88% -8%,rgba(255,123,28,.13),transparent 60%)}
+.wrap{max-width:920px;margin:0 auto}
+a{color:var(--orange-hell)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:26px 0;flex-wrap:wrap}
+.marke{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--weiss)}
+.marke svg{width:30px;height:30px}
+.marke b{font:900 28px/.9 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.stand{font:600 13px var(--schmal);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero{padding-block:clamp(40px,7vw,72px) 28px;border-bottom:1px solid var(--line)}
+.eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 16px;font:600 14px var(--schmal);letter-spacing:.16em;text-transform:uppercase;color:var(--orange-hell)}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--orange)}
+h1{margin:0;color:var(--weiss);font:900 clamp(46px,8vw,92px)/.86 var(--display);text-transform:uppercase;text-wrap:balance}
+h1 em{font-style:normal;color:var(--orange)}
+.lead{max-width:62ch;margin:22px 0 0;font-size:18px}
+.progress{margin-top:32px;display:grid;gap:10px}
+.progress .zahl{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;font:600 14px var(--schmal);letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.progress .zahl b{font:900 34px var(--display);color:var(--weiss);letter-spacing:0;font-variant-numeric:tabular-nums}
+#start-offen{color:var(--orange-hell)} #start-offen.bereit{color:var(--ok)}
+.bar{position:relative;height:14px;background:#2a2e35;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;width:0;background:var(--streifen);background-size:25.46px 25.46px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.hinweis{margin:14px 0 0;font-size:14px;color:var(--muted)}
+.hinweis[data-art="fehler"]{color:var(--orange-hell)}
+.index{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.index a{display:inline-flex;align-items:center;gap:10px;padding:9px 13px;text-decoration:none;color:var(--text);font:600 15px var(--schmal);letter-spacing:.04em;text-transform:uppercase;background:var(--panel);border:1px solid var(--line);transition:border-color .25s,background .25s}
+.index a:hover{border-color:var(--orange);background:var(--panel-hi)}
+.index small{font:600 13px var(--schmal);color:var(--muted);font-variant-numeric:tabular-nums}
+.index a.fertig small{color:var(--ok)}
+section{padding-block:44px 8px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
+.s-kopf{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+h2{margin:0;color:var(--weiss);font:850 clamp(32px,4.4vw,46px)/.95 var(--display);text-transform:uppercase;text-wrap:balance;max-width:22ch}
+.s-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tag{position:relative;padding:6px 12px 5px 18px;background:var(--orange);color:var(--asphalt);font:700 13px var(--schmal);letter-spacing:.1em;text-transform:uppercase}
+.tag::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--streifen);background-size:25.46px 25.46px}
+.tag.ausbau{background:#2f343c;color:var(--text)} .tag.ausbau::before{display:none} .tag.ausbau{padding-left:12px}
+.count{font:600 15px var(--schmal);color:var(--muted);font-variant-numeric:tabular-nums}
+.count.fertig{color:var(--ok)}
+.s-lead{max-width:66ch;margin:14px 0 0}
+.gruppe{margin-top:26px}
+.gruppe h3{margin:0 0 6px;font:600 14px var(--schmal);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-hell)}
+ul.punkte{list-style:none;margin:0;padding:0}
+ul.punkte li{border-top:1px solid var(--line)}
+ul.punkte li:last-child{border-bottom:1px solid var(--line)}
+label.punkt{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;padding:14px 6px 14px 2px;cursor:pointer;transition:background .2s}
+label.punkt:hover{background:linear-gradient(90deg,rgba(255,123,28,.09),transparent 70%)}
+label.punkt input{position:absolute;opacity:0;width:1px;height:1px}
+.box{width:24px;height:24px;margin-top:1px;position:relative;border:2px solid var(--line-hi);background:#16191d;transition:background .2s,border-color .2s}
+.box::after{content:"";position:absolute;left:6px;top:1px;width:7px;height:13px;border:solid var(--asphalt);border-width:0 3px 3px 0;rotate:45deg;opacity:0;transition:opacity .15s}
+label.punkt input:checked + .box{background:var(--orange);border-color:var(--orange)}
+label.punkt input:checked + .box::after{opacity:1}
+label.punkt input:focus-visible + .box{outline:3px solid var(--orange);outline-offset:3px}
+label.punkt input:disabled ~ *{cursor:default}
+.txt{color:var(--text)}
+.txt small{display:block;margin-top:3px;color:var(--muted);font-size:14px}
+label.punkt input:checked ~ .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,123,28,.6)}
+.fuss{margin-top:48px;display:grid;gap:8px;font-size:14px;color:var(--muted)}
+.fuss b{color:var(--text);font-weight:600}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{body{background:#fff;color:#111;padding:0}.index,.hinweis{display:none}h1,h2{color:#111}.txt,.lead,.s-lead{color:#222}.box{border-color:#555;background:#fff}label.punkt input:checked + .box{background:#ff7b1c}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="marke" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 25h20v4H6z" fill="#f1f1ee"/><path d="M8.5 25a7.5 8 0 0 1 15 0z" fill="#ff7b1c"/><path d="M16 3v5M5 8l3.3 3.3M27 8l-3.3 3.3M1.5 18H6M26 18h4.5" stroke="#ff7b1c" stroke-width="2.2" stroke-linecap="round"/></svg><b>Cartrans</b></a>
+    <span class="stand" id="stand">Stand 22.09.2026</span>
+  </header>
+  <div class="hero">
+    <p class="eyebrow">Neue Website · To-do für JS-Cartrans</p>
+    <h1>Was wir von Cartrans <em>noch brauchen.</em></h1>
+    <p class="lead">Damit die neue Website online gehen kann, brauchen wir die folgenden Angaben, Freigaben und Zugänge. Erledigte Punkte bitte abhaken. Unterlagen am besten gesammelt schicken: Texte per E-Mail, Fotos in voller Auflösung (keine WhatsApp-Kopien), Logos im Originalformat.</p>
+    <div class="progress" aria-live="polite">
+      <div class="zahl"><span><b id="erledigt">0</b> von <span id="gesamt">0</span> erledigt</span><span id="start-offen"></span></div>
+      <div class="bar" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar"><i id="fill"></i></div>
+      <p class="hinweis" id="hinweis">Wird geladen …</p>
+    </div>
+    <ul class="index" id="index"></ul>
+  </div>
+  <main id="liste"></main>
+  <footer class="fuss">
+    <span><b>Rückfragen</b> gerne direkt an die Agentur.</span>
+    <span>„Vor dem Start nötig“ markiert, was die Veröffentlichung blockiert. Alles andere baut die Seite danach aus.</span>
+  </footer>
+</div>
+
+<script type="application/json" id="data">{"sections": [
+ {"id": "kontakt", "title": "Kontakt und Erreichbarkeit", "start": true,
+  "lead": "Die Anruf- und WhatsApp-Knöpfe sind das Herz der neuen Seite. Sie müssen auf die richtigen Nummern zeigen, und alles, was die Seite verspricht, muss stimmen.",
+  "groups": [
+   {"label": "Nummern", "items": [
+    {"id": "kontakt-1", "t": "Hauptnummer für alle Notruf-Knöpfe festlegen", "h": "Derzeit überall 0660 107 70 52"},
+    {"id": "kontakt-2", "t": "Zweite Nummer 0664 731 130 51 als Ausweichnummer bestätigen"},
+    {"id": "kontakt-3", "t": "WhatsApp: auf welcher Nummer, und wird WhatsApp auch nachts gelesen?", "h": "Der Knopf „Standort senden“ öffnet derzeit einen Chat mit 0660 107 70 52"},
+    {"id": "kontakt-4", "t": "E-Mail-Adresse bestätigen, an die Transportanfragen und Rückrufbitten gehen", "h": "Derzeit office@cartrans.at"}]},
+   {"label": "Versprechen auf der Seite", "items": [
+    {"id": "kontakt-5", "t": "Bestätigen: erreichbar 24 Stunden, 365 Tage im Jahr, auch an Feiertagen"},
+    {"id": "kontakt-6", "t": "Bestätigen: Kunden sprechen direkt mit Ihnen, keine Warteschleife oder Hotline"},
+    {"id": "kontakt-7", "t": "Bestätigen: Bezahlung nach dem Einsatz bar oder mit Karte (laut AGB)"}]}]},
+ {"id": "recht", "title": "Rechtliches", "start": true,
+  "lead": "Im Impressum fehlen auf der bisherigen Seite Pflichtangaben, eine Datenschutzerklärung gab es gar nicht. Beides ist auf der neuen Seite vorbereitet und gelb markiert.",
+  "groups": [
+   {"label": "Impressum", "items": [
+    {"id": "recht-1", "t": "Unternehmensgegenstand und Gewerbewortlaut laut Gewerbeberechtigung"},
+    {"id": "recht-2", "t": "Zuständige Gewerbebehörde", "h": "z. B. Bezirkshauptmannschaft Wiener Neustadt"},
+    {"id": "recht-3", "t": "Kammer und Fachgruppe in der Wirtschaftskammer"},
+    {"id": "recht-4", "t": "Teilnahme an Verbraucherschlichtung: ja oder nein"}]},
+   {"label": "Datenschutz und AGB", "items": [
+    {"id": "recht-5", "t": "Datenschutzerklärung prüfen und freigeben (Entwurf liegt auf der Seite)"},
+    {"id": "recht-6", "t": "Speicherdauer für Anfragen festlegen, aus denen kein Auftrag wird", "h": "Vorschlag: 6 Monate"},
+    {"id": "recht-7", "t": "AGB bestätigen, sie wurden unverändert übernommen"},
+    {"id": "recht-8", "t": "Die AGB verweisen auf eine Preisliste: Soll sie auf die Website?"}]}]},
+ {"id": "leistung", "title": "Leistungen und Einsatzgebiet bestätigen", "start": true,
+  "lead": "Diese Aussagen stehen bereits auf der Seite. Bitte prüfen, ob sie genau so stimmen, sonst passen wir sie an.",
+  "groups": [
+   {"label": "Notdienst", "items": [
+    {"id": "leistung-1", "t": "Starthilfe und Hilfe bei Reifenschaden direkt vor Ort: stimmt das?"},
+    {"id": "leistung-2", "t": "Fahrzeug kommt in die Werkstatt nach Wahl, nach Hause oder zu einem Partnerbetrieb"},
+    {"id": "leistung-3", "t": "Mietwagen über EP-Carserviss: Wie läuft das ab, gibt es Telefon oder Website?"},
+    {"id": "leistung-4", "t": "Ausland: Welche Länder fahren Sie an?"}]},
+   {"label": "Transporte", "items": [
+    {"id": "leistung-5", "t": "Sicherung mit Spanngurten an den Rädern und flache Auffahrrampen für tiefe Sportwagen bestätigen"},
+    {"id": "leistung-6", "t": "Transporte ohne Anmeldung und nicht fahrbereite Fahrzeuge: bestätigen"},
+    {"id": "leistung-7", "t": "Zwei Gespanne gleichzeitig (Doppelüberstellung) sind möglich"},
+    {"id": "leistung-8", "t": "Rahmenvereinbarungen für Autohäuser und Werkstätten anbieten: ja oder nein"}]},
+   {"label": "Einsatzgebiet und Fuhrpark", "items": [
+    {"id": "leistung-9", "t": "Einsatzgebiet bestätigen: Wiener Neustadt, Baden, Mödling, A2. Fehlen Orte, z. B. Neunkirchen, Eisenstadt, Wien?"},
+    {"id": "leistung-10", "t": "Fuhrpark vollständig beschreiben", "h": "Auf der Seite: VW Touareg als Zugfahrzeuge, offene Autotransportanhänger, ein Kofferanhänger. Gibt es auch Abschleppwagen, Seilwinde oder Kran (in den AGB erwähnt)?"}]}]},
+ {"id": "bilder", "title": "Fotos und Logo", "start": true,
+  "lead": "Die Seite nutzt ausschließlich Ihre eigenen Fotos von der alten Website. Bevor sie öffentlich wird, müssen diese Punkte geklärt sein.",
+  "groups": [
+   {"label": "Fotos", "items": [
+    {"id": "bilder-1", "t": "Auf vielen Fotos sind Kennzeichen von Kundenfahrzeugen lesbar: unkenntlich machen lassen oder schriftlich freigeben"},
+    {"id": "bilder-2", "t": "Bestätigen, dass die Fotos der Kundenfahrzeuge (z. B. Lamborghini, Audi R8, Mustang) veröffentlicht werden dürfen"}]},
+   {"label": "Logo", "items": [
+    {"id": "bilder-7", "t": "Gibt es ein Logo? Sonst die vorgeschlagene Wortmarke „Cartrans“ mit Rundumleuchte freigeben"}]}]},
+ {"id": "neufotos", "title": "Neue Fotos", "start": false,
+  "lead": "Eigene, neue Fotos machen die Seite noch persönlicher. Wir beraten gerne, wie sie mit dem Handy gelingen.",
+  "groups": [
+   {"label": null, "items": [
+    {"id": "bilder-3", "t": "Inhaberin oder Team mit Fahrzeug, für „Über uns“", "h": "Mit Einverständnis der abgebildeten Personen"},
+    {"id": "bilder-4", "t": "Ein Einsatz bei Nacht mit eingeschalteter Rundumleuchte, als Titelbild"},
+    {"id": "bilder-5", "t": "Der ganze Fuhrpark in einer Reihe"},
+    {"id": "bilder-6", "t": "Querformat-Fotos (Handy quer halten) für breite Bildschirme"}]}]},
+ {"id": "partner", "title": "Partner", "start": true,
+  "lead": "Die sechs Partner von der alten Seite stehen auch auf der neuen, auf der Startseite, bei Autohäuser und bei Über uns.",
+  "groups": [
+   {"label": null, "items": [
+    {"id": "partner-1", "t": "Von jedem Partner die Freigabe einholen, mit Namen genannt zu werden", "h": "EP-Carserviss, Autohaus Narowetz, car.acho, Kopf Roman Transportservice, Kfz-Meisterbetrieb Vivod, Autohaus Willander"},
+    {"id": "partner-2", "t": "Websites der Partner für Verlinkungen (optional)"},
+    {"id": "partner-3", "t": "Logos der Partner als Vektordatei oder PNG mit transparentem Hintergrund (optional)"}]}]},
+ {"id": "zahlen", "title": "Zahlen, Preise und Bewertungen", "start": false,
+  "lead": "Konkrete Zahlen schaffen Vertrauen. Wir verwenden nur Zahlen, die Sie bestätigen, erfundene Angaben kommen nicht auf die Seite.",
+  "groups": [
+   {"label": null, "items": [
+    {"id": "zahlen-1", "t": "Seit wann gibt es die Firma, wie viele Jahre Erfahrung?"},
+    {"id": "zahlen-2", "t": "Ungefähre Anzahl an Einsätzen pro Jahr"},
+    {"id": "zahlen-3", "t": "Typische Anfahrtszeit im Raum Wiener Neustadt", "h": "Nur, wenn sie verlässlich eingehalten wird"},
+    {"id": "zahlen-4", "t": "Richtpreise veröffentlichen (z. B. „Starthilfe ab …“): ja oder nein"},
+    {"id": "zahlen-5", "t": "Link zum Google-Unternehmensprofil für die Bewertungen"}]}]},
+ {"id": "technik", "title": "Zugänge und Umzug", "start": true,
+  "lead": "Für den Umzug von Wix auf die neue Seite brauchen wir einige Zugänge. Wichtig: Die E-Mail-Adresse darf beim Umzug nicht ausfallen.",
+  "groups": [
+   {"label": null, "items": [
+    {"id": "technik-1", "t": "Zugang zur Domain cartrans.at (bei welchem Anbieter liegt sie?)"},
+    {"id": "technik-2", "t": "Wo liegt das E-Mail-Postfach office@cartrans.at? (Anbieter, damit die Mails beim Umzug weiterlaufen)"},
+    {"id": "technik-3", "t": "Zugang zum Google-Unternehmensprofil oder Einladung als Verwalter"},
+    {"id": "technik-4", "t": "Zugangsdaten für den Versand der Formular-E-Mails (SMTP) oder Freigabe, dass wir einen Versanddienst einrichten"},
+    {"id": "technik-5", "t": "Wix-Abo erst kündigen, wenn die neue Seite live ist", "h": "Merkpunkt, nicht jetzt erledigen"}]}]}
+]}</script>
+<script>
+(function () {
+  'use strict';
+  const DATA = JSON.parse(document.getElementById('data').textContent);
+  const STATE = { done: {}, stand: '2026-09-22' };
+  const $ = s => document.querySelector(s);
+  const alle = DATA.sections.flatMap(s => s.groups.flatMap(g => g.items));
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const zaehle = s => { const its = s.groups.flatMap(g => g.items); return [its.filter(i => STATE.done[i.id]).length, its.length]; };
+  let modus = 'lokal';
+  const API = '/api/checkliste', LOKAL = 'cartrans-offene-punkte-v1';
+  const schluessel = new URLSearchParams(location.search).get('k') || '';
+
+  function render() {
+    $('#liste').innerHTML = DATA.sections.map(s => {
+      const [d, n] = zaehle(s);
+      return `<section id="${s.id}" aria-labelledby="h-${s.id}">
+        <div class="s-kopf"><h2 id="h-${s.id}">${esc(s.title)}</h2>
+          <div class="s-meta"><span class="tag${s.start ? '' : ' ausbau'}">${s.start ? 'Vor dem Start nötig' : 'Ausbau'}</span>
+          <span class="count${d === n ? ' fertig' : ''}" data-count="${s.id}">${d} / ${n}</span></div></div>
+        <p class="s-lead">${esc(s.lead)}</p>
+        ${s.groups.map(g => `<div class="gruppe">${g.label ? `<h3>${esc(g.label)}</h3>` : ''}
+          <ul class="punkte">${g.items.map(i => `<li><label class="punkt"><input type="checkbox" data-id="${i.id}"${STATE.done[i.id] ? ' checked' : ''}><span class="box" aria-hidden="true"></span><span class="txt">${esc(i.t)}${i.h ? `<small>${esc(i.h)}</small>` : ''}</span></label></li>`).join('')}</ul></div>`).join('')}
+      </section>`;
+    }).join('');
+    $('#index').innerHTML = DATA.sections.map(s => { const [d, n] = zaehle(s); return `<li><a href="#${s.id}" class="${d === n ? 'fertig' : ''}">${esc(s.title)} <small data-idx="${s.id}">${d}/${n}</small></a></li>`; }).join('');
+    summen();
+  }
+  function summen() {
+    const d = alle.filter(i => STATE.done[i.id]).length, n = alle.length, pz = n ? Math.round(d / n * 100) : 0;
+    $('#erledigt').textContent = d; $('#gesamt').textContent = n;
+    $('#fill').style.width = pz + '%'; $('#bar').setAttribute('aria-valuenow', pz);
+    const offen = DATA.sections.filter(s => s.start).flatMap(s => s.groups.flatMap(g => g.items)).filter(i => !STATE.done[i.id]).length;
+    const so = $('#start-offen'); so.textContent = offen ? `${offen} Punkte blockieren den Start` : 'Startbereit'; so.classList.toggle('bereit', !offen);
+    DATA.sections.forEach(s => {
+      const [sd, sn] = zaehle(s);
+      const c = document.querySelector(`[data-count="${s.id}"]`); if (c) { c.textContent = `${sd} / ${sn}`; c.classList.toggle('fertig', sd === sn); }
+      const x = document.querySelector(`[data-idx="${s.id}"]`); if (x) { x.textContent = `${sd}/${sn}`; x.parentElement.classList.toggle('fertig', sd === sn); }
+    });
+  }
+  function hinweis(text, art) { const h = $('#hinweis'); h.textContent = text; if (art) h.dataset.art = art; else delete h.dataset.art; }
+  function nurLesen(text) { modus = 'lesen'; document.querySelectorAll('#liste input').forEach(i => { i.disabled = true; }); hinweis(text); }
+  function standZeigen() { const d = new Date(STATE.stand); if (!isNaN(d)) $('#stand').textContent = 'Stand ' + d.toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric' }); }
+  function uebernehmen(daten) {
+    STATE.done = daten.done || {}; STATE.stand = daten.stand || STATE.stand;
+    document.querySelectorAll('#liste input[data-id]').forEach(i => { i.checked = !!STATE.done[i.dataset.id]; });
+    summen(); standZeigen();
+  }
+  async function holen() {
+    const r = await fetch(API, { cache: 'no-store' });
+    if (!r.ok || !(r.headers.get('content-type') || '').includes('json')) throw new Error('kein Server');
+    return r.json();
+  }
+  document.addEventListener('change', async e => {
+    const i = e.target.closest('input[data-id]'); if (!i) return;
+    const id = i.dataset.id, erledigt = i.checked;
+    if (erledigt) STATE.done[id] = true; else delete STATE.done[id];
+    summen();
+    if (modus === 'lokal') {
+      try { localStorage.setItem(LOKAL, JSON.stringify(STATE.done)); hinweis('Gespeichert in diesem Browser.'); }
+      catch (err) { hinweis('Dieser Browser erlaubt kein Speichern, die Haken gehen beim Schließen verloren.', 'fehler'); }
+      return;
+    }
+    hinweis('Wird gespeichert …');
+    try {
+      const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Checkliste-Schluessel': schluessel }, body: JSON.stringify({ id, done: erledigt }) });
+      if (r.status === 403) { i.checked = !erledigt; nurLesen('Nur lesen: Zum Abhaken bitte den vollständigen Link mit Schlüssel verwenden.'); uebernehmen(await holen()); return; }
+      if (!r.ok) throw new Error(r.status);
+      uebernehmen(await r.json());
+      hinweis('Gespeichert, für alle sichtbar.');
+    } catch (err) {
+      i.checked = !erledigt; if (erledigt) delete STATE.done[id]; else STATE.done[id] = true; summen();
+      hinweis('Speichern hat nicht geklappt. Bitte gleich noch einmal versuchen.', 'fehler');
+    }
+  });
+  standZeigen(); render();
+  holen().then(daten => {
+    modus = (daten.schreibschutz && !schluessel) ? 'lesen' : 'server';
+    uebernehmen(daten);
+    if (modus === 'lesen') nurLesen('Nur lesen: Zum Abhaken bitte den vollständigen Link mit Schlüssel verwenden.');
+    else hinweis('Haken werden gespeichert und sind für alle sichtbar, die diesen Link haben.');
+    const nachladen = () => { if (!document.hidden) holen().then(uebernehmen).catch(() => {}); };
+    setInterval(nachladen, 20000); document.addEventListener('visibilitychange', nachladen);
+  }).catch(() => {
+    try { const alt = JSON.parse(localStorage.getItem(LOKAL) || 'null'); if (alt) uebernehmen({ done: alt, stand: STATE.stand }); } catch (e) {}
+    hinweis('Offline-Modus: Haken werden nur in diesem Browser gespeichert.');
+  });
+})();
+</script>
+</body>
+</html>

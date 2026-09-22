@@ -1,0 +1,50 @@
+<form class="formular" id="transportanfrage" data-formular="transport" novalidate>
+  <ol class="stufen" aria-hidden="true"><li class="aktiv">Fahrzeug</li><li>Strecke</li><li>Kontakt</li></ol>
+  <p class="sr-only" aria-live="polite" data-stufen-ansage>Schritt 1 von 3: Fahrzeug</p>
+
+  <fieldset class="stufe" data-stufe="1" style="border:0;padding:0;margin:0">
+    <legend class="sr-only">Schritt 1: Fahrzeug</legend>
+    <fieldset class="wahl feld">
+      <legend>Was soll transportiert werden?</legend>
+      <label><input type="radio" name="art" value="PKW" checked><span>PKW</span></label>
+      <label><input type="radio" name="art" value="Sportwagen / Oldtimer"><span>Sportwagen / Oldtimer</span></label>
+      <label><input type="radio" name="art" value="Motorrad"><span>Motorrad</span></label>
+      <label><input type="radio" name="art" value="Transporter / Pick-up"><span>Transporter / Pick-up</span></label>
+    </fieldset>
+    <div class="feld-reihe">
+      <div class="feld"><label for="t-fahrzeug">Marke und Modell</label><input id="t-fahrzeug" name="fahrzeug" autocomplete="off" required placeholder="z. B. Ford Mustang 1967"><span class="fehler" id="t-fahrzeug-f"></span></div>
+      <fieldset class="wahl feld"><legend>Fährt das Fahrzeug?</legend>
+        <label><input type="radio" name="fahrbereit" value="ja" checked><span>Ja</span></label>
+        <label><input type="radio" name="fahrbereit" value="nein"><span>Nein</span></label>
+      </fieldset>
+    </div>
+    <div class="stufe-knoepfe"><span></span><button type="button" class="btn btn--hell" data-weiter>Weiter {{icon:pfeil}}</button></div>
+  </fieldset>
+
+  <fieldset class="stufe" data-stufe="2" hidden style="border:0;padding:0;margin:0">
+    <legend class="sr-only">Schritt 2: Strecke</legend>
+    <div class="feld-reihe">
+      <div class="feld"><label for="t-von">Abholung (Ort oder Adresse)</label><input id="t-von" name="von" autocomplete="off" required placeholder="z. B. Wiener Neustadt"><span class="fehler" id="t-von-f"></span></div>
+      <div class="feld"><label for="t-nach">Ziel (Ort oder Adresse)</label><input id="t-nach" name="nach" autocomplete="off" required placeholder="z. B. Autohaus in Wien"><span class="fehler" id="t-nach-f"></span></div>
+    </div>
+    <div class="feld-reihe">
+      <div class="feld"><label for="t-datum">Wunschtermin <span class="opt">(optional)</span></label><input id="t-datum" name="datum" type="date"></div>
+      <div class="feld"><label for="t-info">Hinweise <span class="opt">(optional)</span></label><input id="t-info" name="hinweis" autocomplete="off" placeholder="z. B. tiefergelegt, Schlüssel beim Händler"></div>
+    </div>
+    <div class="stufe-knoepfe"><button type="button" class="btn btn--rand" data-zurueck>{{icon:pfeil-links}} Zurück</button><button type="button" class="btn btn--hell" data-weiter>Weiter {{icon:pfeil}}</button></div>
+  </fieldset>
+
+  <fieldset class="stufe" data-stufe="3" hidden style="border:0;padding:0;margin:0">
+    <legend class="sr-only">Schritt 3: Kontakt</legend>
+    <div class="feld-reihe">
+      <div class="feld"><label for="t-name">Name</label><input id="t-name" name="name" autocomplete="name" required><span class="fehler" id="t-name-f"></span></div>
+      <div class="feld"><label for="t-tel">Telefon</label><input id="t-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" required><span class="fehler" id="t-tel-f"></span></div>
+    </div>
+    <div class="feld"><label for="t-mail">E-Mail <span class="opt">(optional, für das Angebot)</span></label><input id="t-mail" name="email" type="email" autocomplete="email"><span class="fehler" id="t-mail-f"></span></div>
+    <div class="honig" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Mehr dazu in der <a href="/datenschutz">Datenschutzerklärung</a>.</span></label>
+    <span class="fehler" data-fehler-einwilligung style="color:#ff9a9a;font-size:14px"></span>
+    <div class="stufe-knoepfe"><button type="button" class="btn btn--rand" data-zurueck>{{icon:pfeil-links}} Zurück</button><button type="submit" class="btn btn--notruf">Anfrage senden {{icon:pfeil}}</button></div>
+  </fieldset>
+  <div class="form-status" role="status" hidden></div>
+</form>

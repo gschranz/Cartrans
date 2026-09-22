@@ -1,0 +1,45 @@
+<!--meta {"title": "Kontakt: 24/7 erreichbar | JS-Cartrans, Eggendorf", "desc": "JS-Cartrans erreichen: Notruf 0660 107 70 52 oder 0664 731 130 51, WhatsApp, office@cartrans.at. Jasmingasse 2, 2601 Eggendorf. Rund um die Uhr erreichbar.", "pfad": "/kontakt", "nav": "kontakt", "krumen": "Kontakt"} -->
+<section class="seitenkopf seitenkopf--schlicht" aria-labelledby="sk-titel">
+  <div class="wrap">
+    <ol class="brotkrumen" data-reveal><li><a href="/">Start</a></li><li aria-current="page">Kontakt</li></ol>
+    <p class="live" data-reveal style="margin-bottom:20px"><i></i>Jetzt erreichbar · Mo–So 0–24 Uhr</p>
+    <h1 id="sk-titel" class="d1" data-split>Rufen Sie <span class="o">einfach an.</span></h1>
+    <p class="lead" data-reveal style="--d:200ms">Bei Panne und Unfall am schnellsten per Telefon. Für geplante Transporte gerne auch per E-Mail oder Rückruf.</p>
+  </div>
+</section>
+
+<section class="band" style="padding-top:clamp(40px,5vw,72px)" aria-label="Kontaktdaten und Rückruf">
+  <div class="wrap zwei-spalten">
+    <div>
+      <div class="kontaktliste" data-reveal>
+        <a class="kontakt-zeile" href="{{TEL1_HREF}}" data-zaehlen="anruf">{{icon:telefon}}<span><small>Notruf 24/7</small><b>{{TEL1}}</b></span></a>
+        <a class="kontakt-zeile" href="{{TEL2_HREF}}" data-zaehlen="anruf">{{icon:telefon}}<span><small>Zweite Nummer</small><b>{{TEL2}}</b></span></a>
+        <a class="kontakt-zeile" href="{{WA_HREF}}" data-standort data-zaehlen="whatsapp">{{icon:whatsapp}}<span><small>WhatsApp mit Standort</small><b>Nachricht senden</b></span></a>
+        <a class="kontakt-zeile" href="mailto:{{MAIL}}">{{icon:mail}}<span><small>E-Mail</small><span class="t">{{MAIL}}</span></span></a>
+        <a class="kontakt-zeile" href="https://www.google.com/maps/dir/?api=1&amp;destination=Jasmingasse+2,+2601+Eggendorf" target="_blank" rel="noopener">{{icon:route}}<span><small>Adresse · Route planen</small><span class="t">{{STRASSE}}, {{PLZ}} {{ORT}}</span></span></a>
+        <div>{{icon:uhr}}<span><small>Erreichbarkeit</small><span class="t">Montag bis Sonntag, 0 bis 24 Uhr, auch an Feiertagen</span></span></div>
+      </div>
+    </div>
+    <div>
+      <div class="formular-rahmen" data-reveal>
+        <h2 class="d3" style="margin-bottom:10px">Rückruf anfordern</h2>
+        <p style="color:#c9ccd1;margin-bottom:26px">Kein Notfall? Hinterlassen Sie Ihre Nummer, wir melden uns.</p>
+        {{partial:rueckruf}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--tief" aria-labelledby="gebiet-titel">
+  <div class="wrap split split--umgekehrt">
+    <div data-reveal>{{karte}}</div>
+    <div>
+      <p class="eyebrow" data-reveal>Einsatzgebiet</p>
+      <h2 id="gebiet-titel" class="d2" data-split>Von Eggendorf aus</h2>
+      <p class="lead" data-reveal style="margin-top:22px">Wiener Neustadt, Baden, Mödling, die A2 und Umgebung. Transporte in ganz Österreich und ins Ausland.</p>
+      <div data-reveal>{{orte}}</div>
+    </div>
+  </div>
+</section>
+
+{{partial:schluss}}

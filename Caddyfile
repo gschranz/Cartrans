@@ -1,0 +1,71 @@
+{
+	admin off
+	persist_config off
+	auto_https off
+	log {
+		format json
+	}
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+:{$PORT:80} {
+	log {
+		format json
+	}
+
+	respond /health 200
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Frame-Options "DENY"
+		# Standort nur für die eigene Seite (Knopf „Standort per WhatsApp“)
+		Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=(), usb=()"
+		-Server
+	}
+
+	# alte Wix-Adressen weiterleiten, damit Google-Treffer und Lesezeichen funktionieren
+	redir /contact-2 /kontakt 301
+	redir /unsere-leistungen /pannenhilfe 301
+	redir /unsere-arbeit /einsaetze 301
+	redir /partner /ueber-uns#partner 301
+	redir /agb-s /agb 301
+	redir /book-online / 301
+	redir /recipes / 301
+
+	@media path /bilder/* /assets/*
+	header @media Cache-Control "public, max-age=2592000"
+	@fonts path /assets/fonts/*
+	header @fonts Cache-Control "public, max-age=31536000, immutable"
+	@code path /css/* /js/*
+	header @code Cache-Control "public, max-age=86400"
+	@html path *.html /
+	header @html Cache-Control "no-cache"
+
+	root * .
+
+	# Quellen und Werkzeuge nicht ausliefern
+	@intern path /src/* /tools/* /server/* /build.py /*.md /Caddyfile /Dockerfile /start.sh /.git* /.dockerignore /bilder/bilder.json
+	respond @intern 404
+
+	handle /api/* {
+		header Cache-Control "no-store"
+		reverse_proxy 127.0.0.1:{$API_PORT:8081}
+	}
+
+	encode zstd gzip
+
+	handle {
+		try_files {path} {path}.html {path}/index.html
+		file_server
+	}
+
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+}
