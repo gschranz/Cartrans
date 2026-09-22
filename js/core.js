@@ -120,7 +120,7 @@
 
   /* ---------- Anonyme Zählung von Anruf- und WhatsApp-Klicks ---------- */
   document.addEventListener('click', e => {
-    const a = e.target.closest('[data-zaehlen]'); if (!a) return;
+    const a = e.target.closest('[data-zaehlen]'); if (!a || window.STATISCH) return;
     try { navigator.sendBeacon('/api/zaehler', new Blob([JSON.stringify({ art: a.dataset.zaehlen, seite: location.pathname })], { type: 'application/json' })); } catch (err) { /* egal */ }
   });
 
@@ -255,6 +255,15 @@
       const daten = Object.fromEntries(new FormData(form).entries());
       daten.typ = form.dataset.formular; daten.seite = location.pathname;
       const status = $('.form-status', form), senden = $('button[type="submit"]', form);
+      const mailText = () => Object.entries(daten).filter(([k]) => !['website', 'einwilligung', 'seite'].includes(k)).map(([k, v]) => `${k}: ${v}`).join('
+');
+      const mailLink = () => 'mailto:office@cartrans.at?subject=' + encodeURIComponent(daten.typ === 'transport' ? 'Transportanfrage' : 'Rückruf') + '&body=' + encodeURIComponent(mailText());
+      if (window.STATISCH) { // Vorschau ohne Server: Anfrage als E-Mail
+        status.className = 'form-status'; status.hidden = false;
+        status.innerHTML = '<h3>Vorschau</h3><p>In dieser Vorschau wird die Anfrage als E-Mail vorbereitet. Ihr E-Mail-Programm öffnet sich, falls nicht: <a id="ersatz-mail" href="#">E-Mail öffnen</a>.</p>';
+        $('#ersatz-mail', status).href = mailLink(); location.href = mailLink();
+        return;
+      }
       senden.disabled = true; const alt = senden.innerHTML; senden.textContent = 'Wird gesendet …';
       try {
         const r = await fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(daten) });

@@ -488,8 +488,53 @@ def main():
     urls = "".join(f"<url><loc>{DOMAIN}{p}</loc><lastmod>{heute}</lastmod></url>" for p in fertig)
     with open(os.path.join(HIER, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
-    og_bild()
+    if os.path.isdir(os.path.join(HIER, "..", "original", "bilder")):  # Originale liegen nicht im Repo
+        og_bild()
     print(f"{len(quellen)} Seiten erzeugt, Sitemap mit {len(fertig)} Adressen.")
+    if "--pages" in sys.argv:
+        i = sys.argv.index("--pages")
+        pages_export(sys.argv[i + 1], sys.argv[i + 2])
+
+
+# ---------------------------------------------------------------- Vorschau auf GitHub Pages
+def pages_export(basis, ziel):
+    """Statische Vorschau unter einem Unterpfad (z. B. /Cartrans) ohne Server:
+    Pfade werden umgeschrieben, Formulare öffnen eine E-Mail, Google soll nichts indexieren."""
+    import shutil
+    basis = "/" + basis.strip("/")
+    ziel = os.path.abspath(ziel)
+    shutil.rmtree(ziel, ignore_errors=True)
+    os.makedirs(ziel)
+    for ordner in ("css", "js", "assets", "bilder"):
+        shutil.copytree(os.path.join(HIER, ordner), os.path.join(ziel, ordner), ignore=shutil.ignore_patterns("bilder.json"))
+    shutil.copy(os.path.join(HIER, "favicon.svg"), ziel)
+    with open(os.path.join(ziel, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write("User-agent: *\nDisallow: /\n")
+    open(os.path.join(ziel, ".nojekyll"), "w").close()
+
+    def pfade(text):
+        # Wurzel-Pfade in Attributen und srcset um den Unterpfad ergänzen
+        text = re.sub(r'((?:href|src|action)=")/(?!/)', lambda m: m.group(1) + basis + "/", text)
+        text = re.sub(r'(srcset=")([^"]*)"',
+                      lambda m: m.group(1) + re.sub(r"(^|, )/(?!/)", lambda n: n.group(1) + basis + "/", m.group(2)) + '"', text)
+        return text
+
+    with open(os.path.join(HIER, "manifest.webmanifest"), encoding="utf-8") as f:
+        man = f.read().replace('"start_url":"/"', f'"start_url":"{basis}/"').replace('"src":"/', f'"src":"{basis}/')
+    with open(os.path.join(ziel, "manifest.webmanifest"), "w", encoding="utf-8") as f:
+        f.write(man)
+    seiten = [f for f in os.listdir(HIER) if f.endswith(".html")] + ["betreiber/offene-punkte.html"]
+    kopfzeilen = f'<meta name="robots" content="noindex, nofollow">\n<script>window.STATISCH={{basis:"{basis}"}}</script>\n'
+    for name in seiten:
+        with open(os.path.join(HIER, name), encoding="utf-8") as f:
+            text = pfade(f.read())
+        text = re.sub(r'<meta name="robots"[^>]*>\n?', "", text)
+        text = text.replace("<head>\n", "<head>\n" + kopfzeilen, 1)
+        text = text.replace("const API = '/api/", f"const API = '{basis}/api/")
+        os.makedirs(os.path.dirname(os.path.join(ziel, name)), exist_ok=True)
+        with open(os.path.join(ziel, name), "w", encoding="utf-8", newline="\n") as f:
+            f.write(text)
+    print(f"Vorschau für GitHub Pages unter {basis} in {ziel} ({len(seiten)} Seiten).")
 
 
 if __name__ == "__main__":
