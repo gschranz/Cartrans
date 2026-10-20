@@ -28,6 +28,13 @@
 		-Server
 	}
 
+	# === Staging-/Preview-Schutz (SEO) ===
+	# Nur die Produktions-Hosts dürfen indexiert werden. Alle anderen Hosts
+	# (z. B. die Railway-Default-Domain *.up.railway.app) bekommen noindex
+	# und eine robots.txt mit "Disallow: /".
+	@staging not host www.cartrans.at cartrans.at
+	header @staging X-Robots-Tag "noindex, nofollow"
+
 	# alte Wix-Adressen weiterleiten, damit Google-Treffer und Lesezeichen funktionieren
 	redir /contact-2 /kontakt 301
 	redir /unsere-leistungen /pannenhilfe 301
@@ -51,6 +58,14 @@
 	# Quellen und Werkzeuge nicht ausliefern
 	@intern path /src/* /tools/* /server/* /build.py /*.md /Caddyfile /Dockerfile /start.sh /.git* /.dockerignore /bilder/bilder.json
 	respond @intern 404
+
+	# Staging/Preview: robots.txt sperrt die komplette Domain
+	handle /robots.txt {
+		respond @staging "User-agent: *
+Disallow: /
+" 200
+		file_server
+	}
 
 	handle /api/* {
 		header Cache-Control "no-store"
